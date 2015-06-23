@@ -3,10 +3,15 @@
 var EventEmitter = function (context) {this.context = context};
  
 EventEmitter.prototype.on = function (event, listener) {
-    this.context.addEventListener(event, listener, false);
+    if (typeof this.context[event] === "object")
+        this.context[event] = listener;
+    else
+        this.context.addEventListener(event, listener, false);
 };
  
-EventEmitter.prototype.removeListener = this.context.removeEventListener;
+EventEmitter.prototype.removeListener = function(event,listener) {
+    this.context.removeEventListener(event,listener);
+}
  
 EventEmitter.prototype.emit = function (name) {
     if (this.context.dispatchEvent) {
