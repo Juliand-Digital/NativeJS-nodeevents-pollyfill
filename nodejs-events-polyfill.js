@@ -6,9 +6,7 @@ EventEmitter.prototype.on = function (event, listener) {
     this.context.addEventListener(event, listener, false);
 };
  
-EventEmitter.prototype.removeListener = function (event, listener) {
-    this.context.removeEventListener(event,listener);
-};
+EventEmitter.prototype.removeListener = this.context.removeEventListener;
  
 EventEmitter.prototype.emit = function (name) {
     if (this.context.dispatchEvent) {
