@@ -29,5 +29,5 @@ eventEmitter.removeListener("doorbell",ringDoorBell);
 Using the native events makes it possible to tap in to existing events. An example of catching a window event (as context used in above example is window)
 
 ```
-eventEmitter.on("onclose",doSomething);
+eventEmitter.on("onload",doSomething);
 ```
