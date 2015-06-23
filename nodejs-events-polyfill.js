@@ -1,23 +1,23 @@
  
 /* Polyfill EventEmitter - native JS implementation of node event library */
-var EventEmitter = function () {};
+var EventEmitter = function (context) {};
  
 EventEmitter.prototype.on = function (event, listener) {
-    window.addEventListener(event, listener, false);
+    context.addEventListener(event, listener, false);
 };
  
 EventEmitter.prototype.removeListener = function (event, listener) {
-    window.removeEventListener(event,listener);
+    context.removeEventListener(event,listener);
 };
  
 EventEmitter.prototype.emit = function (name) {
-    if (window.dispatchEvent) {
+    if (context.dispatchEvent) {
         var evt = new Event(name);
-        window.dispatchEvent(evt);
+        context.dispatchEvent(evt);
     } else {  /* Catch for older implementations */  
         var evt = document.createEvent("Event");
         evt.initEvent(name,true,true);
-        window.dispatchEvent(evt);
+        context.dispatchEvent(evt);
     }
 };
 
