@@ -6,7 +6,7 @@ A native JS implementation of the node event library. Creates an object that can
 ##Include library
 
 ```
-<script href="nodejs-events-polyfill.js"></script>
+<script src="nodejs-events-polyfill.js"></script>
 ```
 
 ## Dispatching & catching events
@@ -18,7 +18,7 @@ function ringDoorBell()  {
   console.log("ring ring ring")
 }
 eventEmitter.on("doorbell",ringDoorBell); // runs every time doorbell rings
-eventEmitter.on("doorbell",ringDoorBell); // runs only once then removes listener
+eventEmitter.once("doorbell",ringDoorBell); // runs only once then removes listener
 
 eventEmitter.emit("doorbell"); 
 eventEmitter.removeListener("doorbell",ringDoorBell); 
