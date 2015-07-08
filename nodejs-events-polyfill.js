@@ -14,14 +14,9 @@ EventEmitter.prototype.removeListener = function(event,listener) {
 }
  
 EventEmitter.prototype.emit = function (name) {
-    if (this.context.dispatchEvent) {
-        var evt = new Event(name);
-        this.context.dispatchEvent(evt);
-    } else {  /* Catch for older implementations */  
-        var evt = document.createEvent("Event");
-        evt.initEvent(name,true,true);
-        this.context.dispatchEvent(evt);
-    }
+    var evt = document.createEvent("Event");
+    evt.initEvent(name,true,true);
+    this.context.dispatchEvent(evt);
 };
 
 EventEmitter.prototype.once = function (event, listener) {
